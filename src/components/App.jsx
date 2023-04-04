@@ -1,5 +1,8 @@
 import { Component } from "react";
-import { Reviews } from "./Reviews/Reviews";
+
+import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
+import { Statistics } from "./Statistics/Statistics";
+import { Notification } from "./Notification/Notification";
 
 export class App extends Component {
 
@@ -28,7 +31,7 @@ export class App extends Component {
   }
 
   handleClickGood = (event) => {
-      // this.countTotalFeedback()
+  
       this.setState((prevState) => {
           return {
             good: prevState.good + 1,
@@ -39,7 +42,7 @@ export class App extends Component {
   }
 
   handleClickNeutral = (event) => {
-    // this.countTotalFeedback()
+   
       this.setState((prevState) => {
           return {
               neutral: prevState.neutral + 1, 
@@ -68,12 +71,14 @@ export class App extends Component {
           height: '100vh',
           display: 'flex',
           justifyContent: 'center',
+          flexDirection: "column",
           alignItems: 'center',
           fontSize: 40,
           color: '#010101'
         }}
       >
-        <Reviews handleClickGood={this.handleClickGood} handleClickNeutral={this.handleClickNeutral} handleClickBad={this.handleClickBad} stateValue={this.state} />
+        <FeedbackOptions handleClickGood={this.handleClickGood} handleClickNeutral={this.handleClickNeutral} handleClickBad={this.handleClickBad} stateValue={this.state} />
+        {this.state.total ? <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.state.total} positiveFeedback={this.state.positiveFeedback}></Statistics> : <Notification message="There is no feedback"/>}
       </div>
     );
   }

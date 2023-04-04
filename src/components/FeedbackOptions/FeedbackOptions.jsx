@@ -1,7 +1,7 @@
 
-import css from "./Reviews.module.css"
+import css from "./FeedbackOptions.module.css"
 
-export const Reviews = ({
+export const FeedbackOptions = ({
     handleClickGood,
     handleClickNeutral,
     handleClickBad, stateValue}) => {
@@ -27,15 +27,6 @@ export const Reviews = ({
                         <li className="reviewsContainer__item">
                             <button className={css.btn} onClick={handleClickBad}>BAD</button>
                         </li>
-                    </ul>
-                </div>
-                <div className="reviews-results__container">
-                    <ul className={css.list}>
-                        <li className="reviews-results__item">Good: {stateValue.good}</li>
-                        <li className="reviews-results__item">Neutral: {stateValue.neutral}</li>
-                        <li className="reviews-results__item">Bad: {stateValue.bad}</li>
-                        <li className="reviews-results__item">Total: {stateValue.total}</li>
-                        <li className="reviews-results__item">Positive feedback: {stateValue.positiveFeedback}%</li>
                     </ul>
                 </div>
             </div>

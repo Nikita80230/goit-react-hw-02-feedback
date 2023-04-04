@@ -5,9 +5,14 @@
   list-style: none;
   justify-content: space-evenly;
 }
+
 .btn {
   width: 150px;
   height: 75px;
   background-color: rgb(180, 188, 85);
   border-radius: 25px;
+}
+
+.list.reviewsList {
+  flex-direction: column;
 }
