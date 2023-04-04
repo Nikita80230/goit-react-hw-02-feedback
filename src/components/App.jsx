@@ -59,6 +59,7 @@ export class App extends Component {
     this.countTotalFeedback()
     this.countPositiveFeedbackPercentage()
   }
+  
 
   render() {
     return (
