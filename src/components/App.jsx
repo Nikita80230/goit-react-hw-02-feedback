@@ -59,7 +59,7 @@ export class App extends Component {
     this.countTotalFeedback()
     this.countPositiveFeedbackPercentage()
   }
-  
+
 
   render() {
     return (
@@ -73,7 +73,7 @@ export class App extends Component {
           color: '#010101'
         }}
       >
-        <Reviews countTotalFeedback={this.countTotalFeedback} handleClickGood={this.handleClickGood} handleClickNeutral={this.handleClickNeutral} handleClickBad={this.handleClickBad} countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage} stateValue={this.state} />
+        <Reviews handleClickGood={this.handleClickGood} handleClickNeutral={this.handleClickNeutral} handleClickBad={this.handleClickBad} stateValue={this.state} />
       </div>
     );
   }
