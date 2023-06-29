@@ -19,7 +19,7 @@ export const FeedbackOptions = ({
                             <button
                                 name={option}
                                 className={css.btn}
-                                onClick={event => onOptionClick(event)}
+                                onClick={onOptionClick}
                             >
                                 {option.toUpperCase()}
                             </button>
