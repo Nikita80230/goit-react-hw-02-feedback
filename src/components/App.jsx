@@ -77,7 +77,11 @@ export class App extends Component {
           color: '#010101'
         }}
       >
-        <FeedbackOptions handleClickGood={this.handleClickGood} handleClickNeutral={this.handleClickNeutral} handleClickBad={this.handleClickBad} stateValue={this.state} />
+        <FeedbackOptions
+          handleClickGood={this.handleClickGood}
+          handleClickNeutral={this.handleClickNeutral}
+          handleClickBad={this.handleClickBad}
+          stateValue={this.state} />
         {this.state.total ? <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.state.total} positiveFeedback={this.state.positiveFeedback}></Statistics> : <Notification message="There is no feedback"/>}
       </div>
     );
