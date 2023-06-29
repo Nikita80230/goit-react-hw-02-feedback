@@ -16,55 +16,51 @@ export class App extends Component {
 
   countPositiveFeedbackPercentage = () => {
     this.setState((prevState) => {
-          return {
-              positiveFeedback: Math.round(prevState.good/prevState.total *100)
-          }
-      })
+      return {
+        positiveFeedback: Math.round(prevState.good / prevState.total * 100)
+      }
+    })
   }
 
   countTotalFeedback = () => {
     this.setState((prevState) => {
-          return {
-              total: prevState.good + prevState.neutral + prevState.bad,
-          }
-      })
+      return {
+        total: prevState.good + prevState.neutral + prevState.bad,
+      }
+    })
   }
 
-  handleClickGood = (event) => {
-  
-      this.setState((prevState) => {
-          return {
-            good: prevState.good + 1,
-          }
-      })
+  // handleClickGood = (event) => {
+
+  //   this.setState((prevState) => {
+  //     return {
+  //       good: prevState.good + 1,
+  //     }
+  //   })
+  //   this.countTotalFeedback()
+  //   this.countPositiveFeedbackPercentage()
+  // }
+
+
+  handleOptionClick = (option) => {
+
+    this.setState((prevState) => {
+      return {
+        [option]: prevState[option] + 1,
+      }
+    })
     this.countTotalFeedback()
     this.countPositiveFeedbackPercentage()
   }
-
-  handleClickNeutral = (event) => {
-   
-      this.setState((prevState) => {
-          return {
-              neutral: prevState.neutral + 1, 
-          }
-      })
-    this.countTotalFeedback()
-    this.countPositiveFeedbackPercentage()
-  }
-
-  handleClickBad = (event) => {
-    
-      this.setState((prevState) => {
-          return {
-              bad: prevState.bad + 1,
-          }
-      })
-    this.countTotalFeedback()
-    this.countPositiveFeedbackPercentage()
-  }
-
 
   render() {
+    const { good, neutral, bad } = this.state
+    const totalFeedback = good + neutral + bad;
+
+    const positiveFeedback = Math.round(good / totalFeedback * 100)
+
+
+
     return (
       <div
         style={{
@@ -78,11 +74,9 @@ export class App extends Component {
         }}
       >
         <FeedbackOptions
-          handleClickGood={this.handleClickGood}
-          handleClickNeutral={this.handleClickNeutral}
-          handleClickBad={this.handleClickBad}
-          stateValue={this.state} />
-        {this.state.total ? <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.state.total} positiveFeedback={this.state.positiveFeedback}></Statistics> : <Notification message="There is no feedback"/>}
+          handleOptionClick={this.handleOptionClick}
+          options={this.state} />
+        {totalFeedback ? <Statistics good={good} neutral={neutral} bad={bad} total={totalFeedback} positiveFeedback={positiveFeedback}></Statistics> : <Notification message="There is no feedback" />}
       </div>
     );
   }
