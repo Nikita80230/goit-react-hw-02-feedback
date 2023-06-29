@@ -2,7 +2,7 @@ import css from './FeedbackOptions.module.css';
 
 export const FeedbackOptions = ({
     handleOptionClick,
-    stateValue,
+    options,
 }) => {
 
     const onOptionClick = event => {
@@ -11,40 +11,23 @@ export const FeedbackOptions = ({
 
     return (
         <div>
-            <div className="reviewsContainer">
-                <h2 className="reviewsContainer__title">Please leave feedback</h2>
+            <div>
+                <h2>Please leave feedback</h2>
                 <ul className={css.list}>
-                    <li className="reviewsContainer__item">
-                        <button
-                            name='good'
-                            className={css.btn}
-                            onClick={event => onOptionClick(event)}
-                        >
-                            GOOD
-                        </button>
-                    </li>
-                    <li className="reviewsContainer__item">
-                        <button
-                            name='neutral'
-                            className={css.btn}
-                            onClick={event => onOptionClick(event)}
-                        >
-                            NEUTRAL
-                        </button>
-                    </li>
-                    <li className="reviewsContainer__item">
-                        <button
-                            name='bad'
-                            className={css.btn}
-                            onClick={event => onOptionClick(event)}
-                        >
-                            BAD
-                        </button>
-                    </li>
+                    {Object.keys(options).map((option) => {
+                        return (<li key={option}>
+                            <button
+                                name={option}
+                                className={css.btn}
+                                onClick={event => onOptionClick(event)}
+                            >
+                                {option.toUpperCase()}
+                            </button>
+                        </li>)
+                    })}
                 </ul>
             </div>
         </div>
     );
 };
 
-//  onClick={handleClick}
